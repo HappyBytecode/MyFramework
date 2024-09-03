@@ -1,0 +1,97 @@
+js 调用 native
+    第一种方式：通过 addJavascriptInterface 方法进行添加对象映射
+
+            mWebView.getSettings().setJavaScriptEnabled(true);
+            public class JSObject {
+                private Context mContext;
+                public JSObject(Context context) {
+                    mContext = context;
+                }
+
+                @JavascriptInterface
+                public String showToast(String text) {
+                    Toast.show(mContext, text, Toast.LENGTH_SHORT).show();
+                    return "success";
+                }
+            }
+            ...
+            //特定版本下会存在漏洞
+            mWebView.addJavascriptInterface(new JSObject(this), "myObj");
+
+    第二种方式：利用 WebViewClient 接口回调方法拦截 url
+            回调接口  shouldOverrideUrlLoading (WebView view, WebResourceRequest request)) ，
+            拦截 url，然后解析这个 url 的协议，如果发现是我们预先约定好的协议就开始解析参数，
+            执行相应的逻辑
+
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //假定传入进来的 url = "js://openActivity?arg1=111&arg2=222"，代表需要打开本地页面，并且带入相应的参数
+                Uri uri = Uri.parse(url);
+                String scheme = uri.getScheme();
+                //如果 scheme 为 js，代表为预先约定的 js 协议
+                if (scheme.equals("js")) {
+                      //如果 authority 为 openActivity，代表 web 需要打开一个本地的页面
+                    if (uri.getAuthority().equals("openActivity")) {
+                          //解析 web 页面带过来的相关参数
+                        HashMap<String, String> params = new HashMap<>();
+                        Set<String> collection = uri.getQueryParameterNames();
+                        for (String name : collection) {
+                            params.put(name, uri.getQueryParameter(name));
+                        }
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.putExtra("params", params);
+                        getContext().startActivity(intent);
+                    }
+                    //代表应用内部处理完成
+                    return true;
+                }
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
+
+    第三种方式：利用 WebChromeClient 回调接口的三个方法拦截消息,这个方法的原理和第二种方式原理一样，
+                都是拦截相关接口，只是拦截的接口不一样
+                onJsAlert   方法是弹出警告框，一般情况下在 Android 中为 Toast，在文本里面加入\n就可以换行；
+                onJsConfirm 弹出确认框，会返回布尔值，通过这个值可以判断点击时确认还是取消，true表示点击了确认，
+                            false表示点击了取消；
+                onJsPrompt  弹出输入框，点击确认返回输入框中的值，点击取消返回 null。
+
+                //Android 代码
+                @Override
+                public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                    return super.onJsAlert(view, url, message, result);
+                }
+
+                @Override
+                public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+                    return super.onJsConfirm(view, url, message, result);
+                }
+
+                @Override
+                public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, JsPromptResult result) {
+                    //假定传入进来的 message = "js://openActivity?arg1=111&arg2=222"，代表需要打开本地页面，并且带入相应的参数
+                    Uri uri = Uri.parse(message);
+                    String scheme = uri.getScheme();
+                    if (scheme.equals("js")) {
+                        if (uri.getAuthority().equals("openActivity")) {
+                            HashMap<String, String> params = new HashMap<>();
+                            Set<String> collection = uri.getQueryParameterNames();
+                            for (String name : collection) {
+                                params.put(name, uri.getQueryParameter(name));
+                            }
+                            Intent intent = new Intent(getContext(), MainActivity.class);
+                            intent.putExtra("params", params);
+                            getContext().startActivity(intent);
+                            //代表应用内部处理完成
+                            result.confirm("success");
+                        }
+                        return true;
+                    }
+                    return super.onJsPrompt(view, url, message, defaultValue, result);
+                }
+
+
+                //js代码
+                function clickprompt(){
+                    var result=prompt("js://openActivity?arg1=111&arg2=222");
+                    alert("open activity " + result);
+                }
