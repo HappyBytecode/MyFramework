@@ -1,0 +1,1 @@
+1.网络采用Retrofit+Rxjava,整个网络框架的实现借鉴RxHttpUtils-2.x,Ant-master,okhttp-OkGo-master

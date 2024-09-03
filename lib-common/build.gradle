@@ -1,0 +1,77 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    publishNonDefault true
+
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    productFlavors {
+        create('all') {
+
+        }
+    }
+}
+
+configurations {
+    allDebug
+    allRelease
+}
+
+dependencies {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:$rootProject.supportVersion"
+    compile "com.android.support:design:$rootProject.supportVersion"
+    compile "com.android.support.constraint:constraint-layout:$rootProject.constraint"
+
+    /**
+     * 网络相关
+     */
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofit2"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit2"
+    compile "com.squareup.retrofit2:converter-scalars:$rootProject.retrofit2"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofit2"
+    compile "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid"
+
+    /**
+     * eventbus相关
+     */
+    compile "org.greenrobot:eventbus:$rootProject.eventbus"
+
+    /**
+     * greendao相关
+     */
+    compile "org.greenrobot:greendao:$rootProject.greendao"
+
+    /**
+     * glide 相关
+     */
+    compile "com.github.bumptech.glide:glide:$rootProject.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide"
+    compile "com.github.bumptech.glide:okhttp3-integration:$rootProject.integration"
+    compile "jp.wasabeef:glide-transformations:$rootProject.transformations"
+    // If you want to use the GPU Filters
+    compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:$rootProject.gpuimage"
+
+/**
+ * 权限相关
+ */
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    testCompile 'junit:junit:4.12'
+}

@@ -1,0 +1,35 @@
+<resources>
+    <!-- 分割线 -->
+    <dimen name="line">0.5dp</dimen>
+    <!-- 触摸-->
+    <dimen name="touch_height">48dp</dimen>
+    <!-- 栅格 -->
+    <dimen name="grid_height">8dp</dimen>
+    <!-- 导航栏高度-->
+    <dimen name="nav_height">48dp</dimen>
+    <!-- 导航栏高度-->
+    <dimen name="nav_height_width">64dp</dimen>
+    <!-- button高度 -->
+    <dimen name="button_height">40dp</dimen>
+    <!-- 两侧空余高度 -->
+    <dimen name="free_height">16dp</dimen>
+    <dimen name="circle_height">48dp</dimen>
+    <dimen name="item_with_image">72dp</dimen>
+
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+
+    <!-- 导航栏字体大小 -->
+    <dimen name="text_nav">18sp</dimen>
+    <!-- 标题字体大小 -->
+    <dimen name="text_title">16sp</dimen>
+    <!-- 内容字体大小 -->
+    <dimen name="text_content">14sp</dimen>
+    <!-- 辅助性文字字体大小 -->
+    <dimen name="text_assist">12sp</dimen>
+    <!-- 辅助性小文字字体大小 -->
+    <dimen name="text_assist_small">10sp</dimen>
+
+</resources>

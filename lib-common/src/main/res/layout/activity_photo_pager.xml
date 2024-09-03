@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_1">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include layout="@layout/head_toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_gravity="bottom"
+        android:background="@color/dark_2_transparent">
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_12"
+            android:text="编辑"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_title" />
+
+        <LinearLayout
+            android:id="@+id/ll_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:enabled="false"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_title" />
+
+            <ImageView
+                android:id="@+id/iv_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/grid_height"
+                android:src="@drawable/selector_picker_checkbox" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_error"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="UselessParent">
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_net_error"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="加载失败"
+        android:textColor="@color/dark_2"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:lineSpacingExtra="5.5dp"
+        android:text="您的数据被高智慧生物屏蔽了"
+        android:textColor="@color/dark_4" />
+
+    <Button
+        android:id="@+id/button_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="刷新一下" />
+
+</LinearLayout>

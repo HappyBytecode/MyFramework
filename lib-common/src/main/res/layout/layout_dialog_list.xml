@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/button_height"
+    android:layout_marginRight="@dimen/button_height">
+
+    <ListView
+        android:id="@+id/lv_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_4"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@color/divider"
+        android:dividerHeight="0.5dp"
+        android:listSelector="@color/transparent" />
+</FrameLayout>

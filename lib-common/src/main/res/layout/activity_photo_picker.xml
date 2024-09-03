@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head_toolbar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/dim" />
+
+    <LinearLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:background="@color/dark_2">
+
+        <LinearLayout
+            android:id="@+id/ll_select_dir"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingRight="@dimen/dp_12">
+
+            <TextView
+                android:id="@+id/tv_dir_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="全部图片"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_title" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="-4dp"
+                android:src="@mipmap/ic_down" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingLeft="@dimen/grid_height"
+            android:paddingRight="@dimen/dp_12"
+            android:text="预览"
+            android:textColor="@color/select_preview"
+            android:textSize="@dimen/text_title" />
+    </LinearLayout>
+</LinearLayout>

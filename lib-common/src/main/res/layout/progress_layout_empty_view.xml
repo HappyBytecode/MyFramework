@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_empty"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/dark_2"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="无内容" />
+
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:lineSpacingExtra="5.5dp"
+        android:textColor="@color/dark_4"
+        android:text="高智慧生物暂时没有提供内容供您查看" />
+
+</LinearLayout>
