@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LearnDemo</string>
+    <string name="low_storage_error">由于内存问题，导致人脸识别组件下载失败！</string>
+</resources>
